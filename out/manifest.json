@@ -1,0 +1,33 @@
+{
+  "name": "Likhon Sheikh | বাংলা কবিতা ও গদ্য",
+  "short_name": "Likhon",
+  "description": "Likhon Sheikh-এর ব্যক্তিগত কবিতা ও গদ্য সংগ্রহ। প্রেম, ভালোবাসা, বিরহ এবং জীবনের গভীর অনুভূতি নিয়ে লেখা কবিতা।",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDFBF7",
+  "theme_color": "#C06C84",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "64x64",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "literature", "poetry"],
+  "lang": "bn-BD",
+  "dir": "ltr"
+}

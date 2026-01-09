@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Kaium Simanto';
+  src: url('/fonts/Unicode/Li Kaium Simanto Unicode.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Kaium Simanto';
+  src: url('/fonts/Unicode/Li Kaium Simanto Unicode Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Shohid Tahmid Tamin';
+  src: url('/fonts/Unicode/Li Shohid Tahmid Tamin Unicode.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Shohid Tahmid Tamin';
+  src: url('/fonts/Unicode/Li Shohid Tahmid Tamin Unicode Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Lenis Smooth Scroll */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Custom Scrollbar Styling */
+:root {
+  --scrollbar-track: #FDFBF7;
+  --scrollbar-thumb: #C06C84;
+  --scrollbar-thumb-hover: #A55A70;
+  --scrollbar-size: 6px;
+  --scrollbar-radius: 3px;
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: var(--scrollbar-radius);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: var(--scrollbar-radius);
+  border: 2px solid var(--scrollbar-track);
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+  border: 2px solid var(--scrollbar-track);
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--scrollbar-track);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* Scrollbar for specific elements */
+.poetry-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.poetry-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.poetry-content::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 2px;
+}
+
+@layer base {
+  html {
+    /* Disable native smooth scroll since we use Lenis */
+    scroll-behavior: auto;
+  }
+
+  body {
+    @apply bg-paper text-charcoal font-body antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .poetry-content {
+    @apply leading-loose text-lg md:text-xl;
+  }
+
+  .poetry-content p {
+    @apply mb-6;
+  }
+
+  .poetry-content blockquote {
+    @apply border-l-2 border-dustyRose/30 pl-6 italic my-8 text-xl;
+  }
+
+  .poetry-content strong {
+    @apply text-dustyRose font-medium;
+  }
+
+  .poetry-content hr {
+    @apply my-8 border-dustyRose/20;
+  }
+
+  .tag {
+    @apply inline-block px-3 py-1 text-sm bg-softGray text-mutedLavender rounded-full transition-all duration-300;
+  }
+
+  .tag:hover {
+    @apply bg-dustyRose/10 text-dustyRose;
+  }
+
+  .nav-link {
+    @apply relative text-charcoal/80 hover:text-dustyRose transition-colors duration-300;
+  }
+
+  .nav-link::after {
+    @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-dustyRose transition-all duration-300 content-[''];
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+}
