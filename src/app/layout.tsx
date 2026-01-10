@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import SmoothScroll from '@/components/SmoothScroll';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 export const viewport: Viewport = {
   themeColor: '#C06C84',
@@ -10,16 +11,27 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Likhon Sheikh | বাংলা কবিতা ও গদ্য',
-  description: 'Likhon Sheikh-এর ব্যক্তিগত কবিতা ও গদ্য সংগ্রহ। প্রেম, ভালোবাসা, বিরহ এবং জীবনের গভীর অনুভূতি নিয়ে লেখা কবিতা।',
-  keywords: ['বাংলা কবিতা', 'বাংলা গদ্য', 'প্রেমের কবিতা', 'বিরহের কবিতা', 'Likhon Sheikh'],
-  authors: [{ name: 'Likhon Sheikh' }],
+  title: {
+    default: 'Likhon Sheikh | AI & Blockchain Developer',
+    template: '%s | Likhon Sheikh',
+  },
+  description: 'Creator of autonomous AI tools and decentralized applications. Expert in React, Next.js, Solidity, Node.js, AI agents, and smart contracts.',
+  keywords: ['AI developer', 'blockchain developer', 'React', 'Next.js', 'Solidity', 'smart contracts', 'autonomous AI'],
+  authors: [{ name: 'Likhon Sheikh', url: 'https://likhonsheikh.xyz' }],
+  creator: 'Likhon Sheikh',
   openGraph: {
-    title: 'Likhon Sheikh | বাংলা কবিতা ও গদ্য',
-    description: 'ব্যক্তিগত কবিতা ও গদ্য সংগ্রহ',
+    title: 'Likhon Sheikh | AI & Blockchain Developer',
+    description: 'Creator of autonomous AI tools and decentralized applications',
     type: 'website',
-    locale: 'bn_BD',
+    locale: 'en_US',
     siteName: 'Likhon Sheikh',
+    url: 'https://likhonsheikh.xyz',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Likhon Sheikh | AI & Blockchain Developer',
+    description: 'Creator of autonomous AI tools and decentralized applications',
+    creator: '@likhonsheikh',
   },
   icons: {
     icon: '/favicon.png',
@@ -35,16 +47,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="bn" className="lenis lenis-smooth">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://cdn-avatars.huggingface.co" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://cdn-avatars.huggingface.co" />
       </head>
-      <body className="min-h-screen flex flex-col antialiased">
-        <SmoothScroll />
-        <main className="flex-1">
-          {children}
-        </main>
+      <body className="min-h-screen flex flex-col antialiased bg-paper-50 dark:bg-charcoal-950 text-charcoal-900 dark:text-charcoal-100">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SmoothScroll />
+          <main className="flex-1">
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );

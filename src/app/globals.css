@@ -4,7 +4,7 @@
 
 /* ==========================================================================
    Vercel Design System - Global Styles
-   Following Geist design principles
+   Following Geist design principles with Dark Mode Support
    ========================================================================== */
 
 /* Font Face Definitions with Performance Optimization */
@@ -53,11 +53,16 @@
 
   /* Set core body defaults */
   body {
-    @apply bg-paper-100 text-charcoal-900 font-body antialiased;
+    @apply bg-paper-50 text-charcoal-900 font-body antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.5;
     min-height: 100vh;
+  }
+
+  /* Dark mode body styles */
+  html.dark body {
+    @apply bg-charcoal-950 text-charcoal-100;
   }
 
   /* Typography hierarchy following Vercel guidelines */
@@ -75,7 +80,7 @@
 
   /* Link styles */
   a {
-    @apply text-dustyRose-600 hover:text-dustyRose-700 transition-colors duration-200;
+    @apply text-dustyRose-600 dark:text-dustyRose-400 hover:text-dustyRose-700 dark:hover:text-dustyRose-300 transition-colors duration-200;
     text-decoration: none;
   }
 
@@ -85,12 +90,19 @@
 
   /* Focus styles for accessibility */
   :focus-visible {
-    @apply outline-none ring-2 ring-dustyRose-500 ring-offset-2;
+    @apply outline-none ring-2 ring-dustyRose-500 ring-offset-2 dark:ring-offset-charcoal-950;
   }
 
   /* Selection color */
   ::selection {
-    @apply bg-dustyRose-200 text-dustyRose-900;
+    @apply bg-dustyRose-200 dark:bg-dustyRose-900/40 text-dustyRose-900 dark:text-dustyRose-100;
+  }
+
+  /* Scrollbar track colors for dark mode */
+  html.dark {
+    --scrollbar-track: #0f172a;
+    --scrollbar-thumb: #c06c84;
+    --scrollbar-thumb-hover: #a55a70;
   }
 }
 
@@ -101,7 +113,7 @@
 @layer components {
   /* Card Component - Clean, minimal design */
   .card {
-    @apply bg-white rounded-lg border border-charcoal-200 shadow-sm;
+    @apply bg-white dark:bg-charcoal-900 rounded-lg border border-charcoal-200 dark:border-charcoal-800 shadow-sm;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
   }
 
@@ -117,21 +129,21 @@
   }
 
   .btn-primary {
-    @apply bg-dustyRose-600 text-white hover:bg-dustyRose-700 focus:ring-dustyRose-500;
+    @apply bg-dustyRose-600 text-white hover:bg-dustyRose-700 focus:ring-dustyRose-500 dark:bg-dustyRose-600 dark:hover:bg-dustyRose-700;
   }
 
   .btn-secondary {
-    @apply bg-charcoal-100 text-charcoal-900 hover:bg-charcoal-200 focus:ring-charcoal-400;
+    @apply bg-charcoal-100 dark:bg-charcoal-800 text-charcoal-900 dark:text-charcoal-100 hover:bg-charcoal-200 dark:hover:bg-charcoal-700 focus:ring-charcoal-400;
   }
 
   .btn-ghost {
-    @apply bg-transparent text-charcoal-600 hover:bg-charcoal-100 focus:ring-charcoal-400;
+    @apply bg-transparent text-charcoal-600 dark:text-charcoal-400 hover:bg-charcoal-100 dark:hover:bg-charcoal-800 focus:ring-charcoal-400;
   }
 
   /* Input Component */
   .input {
-    @apply w-full px-3 py-2 text-sm bg-white border border-charcoal-300 rounded-md;
-    @apply placeholder:text-charcoal-400;
+    @apply w-full px-3 py-2 text-sm bg-white dark:bg-charcoal-900 border border-charcoal-300 dark:border-charcoal-700 rounded-md;
+    @apply placeholder:text-charcoal-400 dark:placeholder:text-charcoal-500;
     @apply focus:outline-none focus:ring-2 focus:ring-dustyRose-500 focus:border-transparent;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
@@ -142,16 +154,16 @@
   }
 
   .badge-primary {
-    @apply bg-dustyRose-100 text-dustyRose-800;
+    @apply bg-dustyRose-100 dark:bg-dustyRose-900/30 text-dustyRose-800 dark:text-dustyRose-400;
   }
 
   .badge-secondary {
-    @apply bg-charcoal-100 text-charcoal-800;
+    @apply bg-charcoal-100 dark:bg-charcoal-800 text-charcoal-800 dark:text-charcoal-200;
   }
 
   /* Divider */
   .divider {
-    @apply border-t border-charcoal-200 my-6;
+    @apply border-t border-charcoal-200 dark:border-charcoal-800 my-6;
   }
 
   /* Container - Centered with max-width */
@@ -198,12 +210,17 @@
 
   /* Glass morphism effect */
   .glass {
-    @apply bg-white/80 backdrop-blur-sm;
+    @apply bg-white/80 dark:bg-charcoal-950/80 backdrop-blur-sm;
   }
 
   /* Gradient text */
   .gradient-text {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-dustyRose-500 to-mutedLavender-500;
+  }
+
+  /* Theme transition - smooth color transitions */
+  .theme-transition {
+    @apply transition-colors duration-200 ease-in-out;
   }
 }
 
@@ -304,15 +321,15 @@ html.lenis {
 }
 
 .poetry-content blockquote {
-  @apply border-l-2 border-dustyRose-300 pl-6 italic my-8 text-xl;
+  @apply border-l-2 border-dustyRose-300 dark:border-dustyRose-700 pl-6 italic my-8 text-xl;
 }
 
 .poetry-content strong {
-  @apply text-dustyRose-600 font-medium;
+  @apply text-dustyRose-600 dark:text-dustyRose-400 font-medium;
 }
 
 .poetry-content hr {
-  @apply my-8 border-dustyRose-200;
+  @apply my-8 border-dustyRose-200 dark:border-dustyRose-800;
 }
 
 /* ==========================================================================
@@ -320,7 +337,7 @@ html.lenis {
    ========================================================================== */
 
 .nav-link {
-  @apply relative text-charcoal-800 hover:text-dustyRose-600 transition-colors duration-300;
+  @apply relative text-charcoal-800 dark:text-charcoal-300 hover:text-dustyRose-600 dark:hover:text-dustyRose-400 transition-colors duration-300;
 }
 
 .nav-link::after {
@@ -333,11 +350,11 @@ html.lenis {
 
 /* Tag Component */
 .tag {
-  @apply inline-block px-3 py-1 text-sm bg-charcoal-100 text-charcoal-700 rounded-full transition-all duration-300;
+  @apply inline-block px-3 py-1 text-sm bg-charcoal-100 dark:bg-charcoal-800 text-charcoal-700 dark:text-charcoal-300 rounded-full transition-all duration-300;
 }
 
 .tag:hover {
-  @apply bg-dustyRose-100 text-dustyRose-700;
+  @apply bg-dustyRose-100 dark:bg-dustyRose-900/30 text-dustyRose-700 dark:text-dustyRose-400;
 }
 
 /* ==========================================================================
@@ -386,5 +403,24 @@ html.lenis {
 @media (min-width: 1025px) {
   html {
     font-size: 16px;
+  }
+}
+
+/* ==========================================================================
+   Dark Mode Specific Styles
+   ========================================================================== */
+
+@layer dark {
+  /* Dark mode specific overrides */
+  .dark .card {
+    @apply bg-charcoal-900 border-charcoal-800;
+  }
+
+  .dark .input {
+    @apply bg-charcoal-900 border-charcoal-700;
+  }
+
+  .dark .btn-secondary {
+    @apply bg-charcoal-800 text-charcoal-100;
   }
 }

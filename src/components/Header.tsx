@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ThemeToggle from '@/components/ThemeToggle';
 
 /**
  * Header Component - Following Vercel Design Guidelines
@@ -24,16 +25,16 @@ export default function Header() {
 
   // Navigation links with clear hierarchy
   const navLinks = [
-    { href: '/', label: 'হোম' },
-    { href: '/#poems', label: 'কবিতা' },
-    { href: '/about', label: 'সম্পর্কে' },
+    { href: '/', label: 'Home' },
+    { href: '/projects', label: 'Projects' },
+    { href: '/about', label: 'About' },
   ];
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
         isScrolled 
-          ? 'bg-white/80 backdrop-blur-md border-b border-charcoal-100' 
+          ? 'bg-white/80 dark:bg-charcoal-950/80 backdrop-blur-md border-b border-charcoal-100 dark:border-charcoal-800' 
           : 'bg-transparent'
       }`}
       role="banner"
@@ -49,38 +50,46 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="nav-link text-sm font-medium text-charcoal-700 hover:text-dustyRose-600 transition-colors duration-200"
+                className="nav-link text-sm font-medium text-charcoal-700 dark:text-charcoal-300 hover:text-dustyRose-600 dark:hover:text-dustyRose-400 transition-colors duration-200"
               >
                 {link.label}
               </Link>
             ))}
           </div>
 
+          {/* Right Side Actions */}
+          <div className="hidden md:flex items-center gap-3">
+            <ThemeToggle />
+          </div>
+
           {/* Mobile Menu Button - Hamburger icon */}
-          <button
-            className="md:hidden p-2 text-charcoal-700 hover:text-dustyRose-600 transition-colors ml-auto"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isMobileMenuOpen}
-          >
-            <div className="w-5 h-4 flex flex-col justify-between" aria-hidden="true">
-              <span
-                className={`h-0.5 w-full bg-current transition-all duration-200 ${
-                  isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
-                }`}
-              />
-              <span
-                className={`h-0.5 w-full bg-current transition-all duration-200 ${
-                  isMobileMenuOpen ? 'opacity-0' : ''
-                }`}
-              />
-              <span
-                className={`h-0.5 w-full bg-current transition-all duration-200 ${
-                  isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
-                }`}
-              />
-            </div>
-          </button>
+          <div className="md:hidden flex items-center gap-2 ml-auto">
+            <ThemeToggle />
+            <button
+              className="p-2 text-charcoal-700 dark:text-charcoal-300 hover:text-dustyRose-600 dark:hover:text-dustyRose-400 transition-colors"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMobileMenuOpen}
+            >
+              <div className="w-5 h-4 flex flex-col justify-between" aria-hidden="true">
+                <span
+                  className={`h-0.5 w-full bg-current transition-all duration-200 ${
+                    isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
+                  }`}
+                />
+                <span
+                  className={`h-0.5 w-full bg-current transition-all duration-200 ${
+                    isMobileMenuOpen ? 'opacity-0' : ''
+                  }`}
+                />
+                <span
+                  className={`h-0.5 w-full bg-current transition-all duration-200 ${
+                    isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
+                  }`}
+                />
+              </div>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu - Slide animation */}
@@ -98,7 +107,7 @@ export default function Header() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="px-3 py-2.5 text-charcoal-700 hover:text-dustyRose-600 hover:bg-charcoal-50 rounded-md transition-colors duration-200"
+                    className="px-3 py-2.5 text-charcoal-700 dark:text-charcoal-300 hover:text-dustyRose-600 dark:hover:text-dustyRose-400 hover:bg-charcoal-50 dark:hover:bg-charcoal-900 rounded-md transition-colors duration-200"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.label}
