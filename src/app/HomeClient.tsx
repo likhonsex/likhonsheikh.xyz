@@ -32,22 +32,22 @@ export default function HomeClient({ poems, categories, tags }: HomeClientProps)
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section with Banner */}
+      {/* Hero Section - Following Vercel Design Principles */}
       <section 
-        className="relative min-h-[80vh] flex items-center justify-center px-6 overflow-hidden"
+        className="relative min-h-[80vh] flex items-center justify-center px-4 sm:px-6 overflow-hidden"
         role="banner"
         aria-label="Hero section"
       >
-        {/* Preload hero image */}
+        {/* Preload hero image for LCP optimization */}
         <link rel="preload" as="image" href="/hero-banner.jpg" fetchPriority="high" />
         
         {/* Dark Overlay for Text Readability */}
         <div 
-          className="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-charcoal/40 to-charcoal/60"
+          className="absolute inset-0 bg-gradient-to-b from-charcoal-900/60 via-charcoal-900/40 to-charcoal-900/60"
           aria-hidden="true"
         />
 
-        {/* Background Image with optimized loading */}
+        {/* Background Image with GPU acceleration */}
         <div 
           className="absolute inset-0 z-0"
           style={{
@@ -58,13 +58,13 @@ export default function HomeClient({ poems, categories, tags }: HomeClientProps)
             willChange: 'transform',
           }}
           role="img"
-          aria-label="Decorative hero banner image"
+          aria-label="Decorative hero banner"
         />
 
-        {/* Decorative Elements - Reduced for performance */}
+        {/* Decorative Elements - Optimized with will-change */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
           <motion.div
-            className="absolute top-1/4 left-1/4 w-64 h-64 bg-dustyRose/10 rounded-full blur-3xl"
+            className="absolute top-1/4 left-1/4 w-48 h-48 md:w-64 md:h-64 bg-dustyRose-500/10 rounded-full blur-3xl"
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.3, 0.5, 0.3],
@@ -74,9 +74,10 @@ export default function HomeClient({ poems, categories, tags }: HomeClientProps)
               repeat: Infinity,
               ease: 'easeInOut',
             }}
+            style={{ willChange: 'transform, opacity' }}
           />
           <motion.div
-            className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-mutedLavender/10 rounded-full blur-3xl"
+            className="absolute bottom-1/4 right-1/4 w-64 h-64 md:w-80 md:h-80 bg-mutedLavender-500/10 rounded-full blur-3xl"
             animate={{
               scale: [1.2, 1, 1.2],
               opacity: [0.3, 0.5, 0.3],
@@ -86,39 +87,48 @@ export default function HomeClient({ poems, categories, tags }: HomeClientProps)
               repeat: Infinity,
               ease: 'easeInOut',
             }}
+            style={{ willChange: 'transform, opacity' }}
           />
         </div>
 
-        {/* Content */}
-        <div className="relative max-w-3xl mx-auto text-center z-10">
+        {/* Hero Content - Centered with clear hierarchy */}
+        <div className="relative max-w-4xl mx-auto text-center z-10 px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <p className="text-dustyRose/90 text-sm uppercase tracking-widest mb-4">
+            {/* Eyebrow text - Following Vercel pattern */}
+            <p className="text-dustyRose-400 text-xs sm:text-sm uppercase tracking-widest mb-4 font-medium">
               ব্যক্তিগত কবিতা সংগ্রহ
             </p>
-            <h1 className="font-heading text-4xl md:text-6xl font-medium text-white mb-6 leading-tight drop-shadow-lg">
+            
+            {/* Hero Heading - Large, bold typography */}
+            <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl font-semibold text-white mb-6 leading-tight tracking-tight">
               ভালোবাসার কথা,<br />
-              <span className="text-dustyRose">বিরহের গান</span>
+              <span className="text-dustyRose-400">বিরহের গান</span>
             </h1>
-            <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed drop-shadow-md">
+            
+            {/* Subtitle - Readable with good contrast */}
+            <p className="text-charcoal-100 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
               প্রেমের গভীরতা, বিরহের তীব্রতা, এবং জীবনের অনুভূতিকে কবিতার মাধ্যমে প্রকাশ করার একটি প্রচেষ্টা।
             </p>
           </motion.div>
 
+          {/* CTA Button - Following Vercel button patterns */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-12"
+            transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
+            className="mt-10"
           >
             <a
               href="#poems"
-              className="inline-flex items-center gap-2 text-white hover:text-dustyRose transition-colors"
+              className="inline-flex items-center gap-2 text-white hover:text-dustyRose-300 transition-colors duration-200"
             >
-              <span className="text-sm uppercase tracking-wide">পড়তে থাকুন</span>
+              <span className="text-xs sm:text-sm uppercase tracking-wide font-medium">
+                পড়তে থাকুন
+              </span>
               <motion.span
                 animate={{ y: [0, 5, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
@@ -130,67 +140,104 @@ export default function HomeClient({ poems, categories, tags }: HomeClientProps)
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - Subtle animation */}
         <motion.div
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
           aria-hidden="true"
         >
           <motion.div
-            animate={{ y: [0, 10, 0] }}
+            animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2"
+            className="w-5 h-8 md:w-6 md:h-10 border-2 border-white/30 rounded-full flex justify-center pt-2"
           >
             <div className="w-1 h-2 bg-white/50 rounded-full" />
           </motion.div>
         </motion.div>
       </section>
 
-      {/* Poems Section */}
-      <section id="poems" className="py-20 px-6" aria-labelledby="poems-heading">
-        <div className="max-w-4xl mx-auto">
+      {/* Poems Section - Clean, grid-based layout */}
+      <section 
+        id="poems" 
+        className="py-16 sm:py-20 px-4 sm:px-6"
+        aria-labelledby="poems-heading"
+      >
+        <div className="max-w-6xl mx-auto">
+          {/* Section Header - Following Vercel patterns */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 id="poems-heading" className="font-heading text-3xl font-medium text-charcoal mb-4">
+            <h2 
+              id="poems-heading" 
+              className="font-heading text-2xl sm:text-3xl font-semibold text-charcoal-900 mb-4"
+            >
               আমার লেখা
             </h2>
-            <div className="w-16 h-0.5 bg-dustyRose/30 mx-auto" />
+            <div 
+              className="w-12 h-0.5 bg-dustyRose-400 mx-auto" 
+              role="presentation"
+              aria-hidden="true"
+            />
           </motion.div>
 
+          {/* Filter Tabs */}
           <FilterTabs categories={categories} />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6" role="list" aria-label="Poem listings">
+          {/* Poem Grid - Responsive grid layout */}
+          <div 
+            className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8"
+            role="list"
+            aria-label="Poem listings"
+          >
             {filteredPoems.map((poem, index) => (
-              <PoemCard key={poem.slug} poem={poem} index={index} />
+              <PoemCard 
+                key={poem.slug} 
+                poem={poem} 
+                index={index}
+                role="listitem"
+              />
             ))}
           </div>
 
+          {/* Empty State */}
           {filteredPoems.length === 0 && (
-            <p className="text-center text-charcoal/50 py-12">
+            <p className="text-center text-charcoal-500 py-12">
               এই বিভাগে এখনো কোনো লেখা নেই।
             </p>
           )}
         </div>
       </section>
 
-      {/* Tags Section */}
-      <section className="py-16 px-6 bg-softGray/30" aria-labelledby="tags-heading">
-        <div className="max-w-3xl mx-auto text-center">
-          <h3 id="tags-heading" className="font-heading text-xl font-medium text-charcoal mb-6">
+      {/* Tags Section - Clean, minimal design */}
+      <section 
+        className="py-12 sm:py-16 px-4 sm:px-6 bg-charcoal-50"
+        aria-labelledby="tags-heading"
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          <h3 
+            id="tags-heading" 
+            className="font-heading text-lg sm:text-xl font-medium text-charcoal-900 mb-6"
+          >
             বিষয় অনুসারে
           </h3>
-          <div className="flex flex-wrap gap-3 justify-center" role="list" aria-label="Topic tags">
+          
+          {/* Tags Grid - Clean spacing */}
+          <div 
+            className="flex flex-wrap gap-3 justify-center"
+            role="list"
+            aria-label="Topic tags"
+          >
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="tag cursor-default"
                 role="listitem"
+                className="tag cursor-default"
               >
                 {tag}
               </span>

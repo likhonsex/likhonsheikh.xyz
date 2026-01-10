@@ -2,12 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ==========================================================================
+   Vercel Design System - Global Styles
+   Following Geist design principles
+   ========================================================================== */
+
+/* Font Face Definitions with Performance Optimization */
 @font-face {
   font-family: 'Kaium Simanto';
   src: url('/fonts/Unicode/Li Kaium Simanto Unicode.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
   font-display: optional;
 }
 
@@ -16,7 +21,6 @@
   src: url('/fonts/Unicode/Li Kaium Simanto Unicode Italic.ttf') format('truetype');
   font-weight: normal;
   font-style: italic;
-  font-display: swap;
   font-display: optional;
 }
 
@@ -25,7 +29,6 @@
   src: url('/fonts/Unicode/Li Shohid Tahmid Tamin Unicode.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
   font-display: optional;
 }
 
@@ -34,11 +37,180 @@
   src: url('/fonts/Unicode/Li Shohid Tahmid Tamin Unicode Italic.ttf') format('truetype');
   font-weight: normal;
   font-style: italic;
-  font-display: swap;
   font-display: optional;
 }
 
-/* Lenis Smooth Scroll */
+/* ==========================================================================
+   Base Styles - Vercel/Geist Design Principles
+   ========================================================================== */
+
+@layer base {
+  /* Set core root defaults */
+  html {
+    scroll-behavior: auto; /* Lenis handles smooth scrolling */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Set core body defaults */
+  body {
+    @apply bg-paper text-charcoal-900 font-body antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  /* Typography hierarchy following Vercel guidelines */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  /* Paragraph improvements */
+  p {
+    line-height: 1.6;
+    margin-bottom: 1em;
+  }
+
+  /* Link styles */
+  a {
+    @apply text-dustyRose-600 hover:text-dustyRose-700 transition-colors duration-200;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Focus styles for accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-dustyRose-500 ring-offset-2;
+  }
+
+  /* Selection color */
+  ::selection {
+    @apply bg-dustyRose-200 text-dustyRose-900;
+  }
+}
+
+/* ==========================================================================
+   Component Styles - Vercel-style UI Components
+   ========================================================================== */
+
+@layer components {
+  /* Card Component - Clean, minimal design */
+  .card {
+    @apply bg-white rounded-lg border border-charcoal-200 shadow-sm;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .card:hover {
+    @apply shadow-md;
+    transform: translateY(-2px);
+  }
+
+  /* Button Component - Following Vercel patterns */
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-md transition-all duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply bg-dustyRose-600 text-white hover:bg-dustyRose-700 focus:ring-dustyRose-500;
+  }
+
+  .btn-secondary {
+    @apply bg-charcoal-100 text-charcoal-900 hover:bg-charcoal-200 focus:ring-charcoal-400;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-charcoal-600 hover:bg-charcoal-100 focus:ring-charcoal-400;
+  }
+
+  /* Input Component */
+  .input {
+    @apply w-full px-3 py-2 text-sm bg-white border border-charcoal-300 rounded-md;
+    @apply placeholder:text-charcoal-400;
+    @apply focus:outline-none focus:ring-2 focus:ring-dustyRose-500 focus:border-transparent;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  /* Badge Component */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded-full;
+  }
+
+  .badge-primary {
+    @apply bg-dustyRose-100 text-dustyRose-800;
+  }
+
+  .badge-secondary {
+    @apply bg-charcoal-100 text-charcoal-800;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-charcoal-200 my-6;
+  }
+
+  /* Container - Centered with max-width */
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* ==========================================================================
+   Utility Styles - Vercel Design System Utilities
+   ========================================================================== */
+
+@layer utilities {
+  /* Text balance for headings */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Truncate text */
+  .truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Hide scrollbar but allow scrolling */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Aspect ratios */
+  .aspect-video {
+    aspect-ratio: 16 / 9;
+  }
+
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    @apply bg-white/80 backdrop-blur-sm;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-dustyRose-500 to-mutedLavender-500;
+  }
+}
+
+/* ==========================================================================
+   Lenis Smooth Scroll - Performance Optimized
+   ========================================================================== */
+
 html.lenis {
   height: auto;
 }
@@ -59,7 +231,10 @@ html.lenis {
   pointer-events: none;
 }
 
-/* Custom Scrollbar Styling */
+/* ==========================================================================
+   Custom Scrollbar - Following Vercel Design
+   ========================================================================== */
+
 :root {
   --scrollbar-track: #FDFBF7;
   --scrollbar-thumb: #C06C84;
@@ -116,87 +291,100 @@ html.lenis {
   border-radius: 2px;
 }
 
-@layer base {
+/* ==========================================================================
+   Poetry Content Styles
+   ========================================================================== */
+
+.poetry-content {
+  @apply leading-loose text-lg md:text-xl;
+}
+
+.poetry-content p {
+  @apply mb-6;
+}
+
+.poetry-content blockquote {
+  @apply border-l-2 border-dustyRose/30 pl-6 italic my-8 text-xl;
+}
+
+.poetry-content strong {
+  @apply text-dustyRose font-medium;
+}
+
+.poetry-content hr {
+  @apply my-8 border-dustyRose/20;
+}
+
+/* ==========================================================================
+   Navigation & Interactive Elements
+   ========================================================================== */
+
+.nav-link {
+  @apply relative text-charcoal-800 hover:text-dustyRose-600 transition-colors duration-300;
+}
+
+.nav-link::after {
+  @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-dustyRose-500 transition-all duration-300 content-[''];
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+/* Tag Component */
+.tag {
+  @apply inline-block px-3 py-1 text-sm bg-charcoal-100 text-charcoal-700 rounded-full transition-all duration-300;
+}
+
+.tag:hover {
+  @apply bg-dustyRose-100 text-dustyRose-700;
+}
+
+/* ==========================================================================
+   Animation Classes - Following Vercel Motion Principles
+   ========================================================================== */
+
+.animate-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.slide-in-from-bottom {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.slide-in-from-top {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+.scale-in {
+  animation: scaleIn 0.2s ease-out forwards;
+}
+
+/* Stagger children animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* ==========================================================================
+   Responsive Typography - Following Vercel Guidelines
+   ========================================================================== */
+
+@media (max-width: 640px) {
   html {
-    /* Disable native smooth scroll since we use Lenis */
-    scroll-behavior: auto;
-  }
-
-  body {
-    @apply bg-paper text-charcoal font-body antialiased;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-heading;
+    font-size: 14px;
   }
 }
 
-@layer components {
-  .poetry-content {
-    @apply leading-loose text-lg md:text-xl;
-  }
-
-  .poetry-content p {
-    @apply mb-6;
-  }
-
-  .poetry-content blockquote {
-    @apply border-l-2 border-dustyRose/30 pl-6 italic my-8 text-xl;
-  }
-
-  .poetry-content strong {
-    @apply text-dustyRose font-medium;
-  }
-
-  .poetry-content hr {
-    @apply my-8 border-dustyRose/20;
-  }
-
-  .tag {
-    @apply inline-block px-3 py-1 text-sm bg-softGray text-mutedLavender rounded-full transition-all duration-300;
-  }
-
-  .tag:hover {
-    @apply bg-dustyRose/10 text-dustyRose;
-  }
-
-  .nav-link {
-    @apply relative text-charcoal/80 hover:text-dustyRose transition-colors duration-300;
-  }
-
-  .nav-link::after {
-    @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-dustyRose transition-all duration-300 content-[''];
-  }
-
-  .nav-link:hover::after {
-    @apply w-full;
+@media (min-width: 641px) and (max-width: 1024px) {
+  html {
+    font-size: 15px;
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
-  }
-
-  .animate-slide-up {
-    animation: slideUp 0.5s ease-out forwards;
-  }
-
-  .animation-delay-100 {
-    animation-delay: 100ms;
-  }
-
-  .animation-delay-200 {
-    animation-delay: 200ms;
-  }
-
-  .animation-delay-300 {
-    animation-delay: 300ms;
+@media (min-width: 1025px) {
+  html {
+    font-size: 16px;
   }
 }
