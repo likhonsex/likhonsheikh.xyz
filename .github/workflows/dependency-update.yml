@@ -1,0 +1,56 @@
+name: Dependency Update
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Weekly check every Monday
+  workflow_dispatch:
+
+jobs:
+  check-updates:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Check for updates
+        run: |
+          echo "Checking for available updates..."
+          npm outdated --long=false --json > outdated.json || true
+          
+          if [ -s outdated.json ]; then
+            echo "Updates available:"
+            cat outdated.json
+          else
+            echo "All dependencies are up to date!"
+          fi
+
+  security-updates:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Check for security vulnerabilities
+        run: |
+          echo "Scanning for security vulnerabilities..."
+          npm audit --audit-level=high --json > security-report.json || true
+          
+          if [ -s security-report.json ]; then
+            echo "Security scan completed - check security-report.json for details"
+          else
+            echo "No high-severity vulnerabilities found!"
+          fi
