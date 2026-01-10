@@ -89,16 +89,23 @@ module.exports = {
         'wider': '0.04em',
       },
       
+      // Font family for Bengali typography
+      fontFamily: {
+        heading: ['"Kaium Simanto"', 'sans-serif'],
+        body: ['"Shohid Tahmid Tamin"', 'sans-serif'],
+      },
+      
       // Color palette following Vercel/Geist design system
       colors: {
         // Primary - Dusty Rose (accessible, high contrast)
         dustyRose: {
+          DEFAULT: '#C06C84',
           50: '#FDF2F4',
           100: '#FBE5E8',
           200: '#F6CBD2',
           300: '#F0A1AD',
           400: '#E87684',
-          500: '#C06C84', // Main color
+          500: '#C06C84',
           600: '#A8556E',
           700: '#8A4559',
           800: '#72394B',
@@ -108,6 +115,7 @@ module.exports = {
         
         // Secondary - Muted Lavender
         mutedLavender: {
+          DEFAULT: '#8B5CF6',
           50: '#F5F3FF',
           100: '#EDE9FE',
           200: '#DDD6FE',
@@ -123,6 +131,7 @@ module.exports = {
         
         // Neutral - Charcoal (high contrast, accessible)
         charcoal: {
+          DEFAULT: '#0F172A',
           50: '#F8FAFC',
           100: '#F1F5F9',
           200: '#E2E8F0',
@@ -138,8 +147,9 @@ module.exports = {
         
         // Background - Paper (warm white)
         paper: {
+          DEFAULT: '#FDFBF7',
           50: '#FFFCFA',
-          100: '#FDFBF7', // Main background
+          100: '#FDFBF7',
           200: '#F9F5F0',
           300: '#F3EDE4',
           400: '#EAE1D6',
@@ -153,6 +163,7 @@ module.exports = {
         
         // Utility - Soft Gray
         softGray: {
+          DEFAULT: '#71717A',
           50: '#FAFAFA',
           100: '#F4F4F5',
           200: '#E4E4E7',

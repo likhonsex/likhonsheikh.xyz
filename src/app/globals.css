@@ -53,7 +53,7 @@
 
   /* Set core body defaults */
   body {
-    @apply bg-paper text-charcoal-900 font-body antialiased;
+    @apply bg-paper-100 text-charcoal-900 font-body antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.5;
@@ -304,15 +304,15 @@ html.lenis {
 }
 
 .poetry-content blockquote {
-  @apply border-l-2 border-dustyRose/30 pl-6 italic my-8 text-xl;
+  @apply border-l-2 border-dustyRose-300 pl-6 italic my-8 text-xl;
 }
 
 .poetry-content strong {
-  @apply text-dustyRose font-medium;
+  @apply text-dustyRose-600 font-medium;
 }
 
 .poetry-content hr {
-  @apply my-8 border-dustyRose/20;
+  @apply my-8 border-dustyRose-200;
 }
 
 /* ==========================================================================

@@ -12,8 +12,8 @@
       "static/chunks/fd9d1056-00bb33a35b5f8051.js",
       "static/chunks/23-65acef6c9995cc48.js",
       "static/chunks/main-app-3032fae1633af9e8.js",
-      "static/css/dd46f7dc4a9bf5f6.css",
-      "static/chunks/app/layout-380ae2dff340772f.js"
+      "static/css/6f47e5afe722f00a.css",
+      "static/chunks/app/layout-b1592a6ba2193b70.js"
     ],
     "/page": [
       "static/chunks/webpack-1796d5ecd61cbd74.js",
@@ -21,15 +21,7 @@
       "static/chunks/23-65acef6c9995cc48.js",
       "static/chunks/main-app-3032fae1633af9e8.js",
       "static/chunks/872-54aefec9d48a5a9b.js",
-      "static/chunks/app/page-31842641b278c812.js"
-    ],
-    "/poems/[slug]/page": [
-      "static/chunks/webpack-1796d5ecd61cbd74.js",
-      "static/chunks/fd9d1056-00bb33a35b5f8051.js",
-      "static/chunks/23-65acef6c9995cc48.js",
-      "static/chunks/main-app-3032fae1633af9e8.js",
-      "static/chunks/872-54aefec9d48a5a9b.js",
-      "static/chunks/app/poems/[slug]/page-b0f2c251de75d3ce.js"
+      "static/chunks/app/page-9bae955df16a0189.js"
     ],
     "/about/page": [
       "static/chunks/webpack-1796d5ecd61cbd74.js",
@@ -38,7 +30,15 @@
       "static/chunks/main-app-3032fae1633af9e8.js",
       "static/chunks/872-54aefec9d48a5a9b.js",
       "static/chunks/627-f31f1b029a89d12c.js",
-      "static/chunks/app/about/page-153b0ea349ce50eb.js"
+      "static/chunks/app/about/page-ae2f7121b4200775.js"
+    ],
+    "/poems/[slug]/page": [
+      "static/chunks/webpack-1796d5ecd61cbd74.js",
+      "static/chunks/fd9d1056-00bb33a35b5f8051.js",
+      "static/chunks/23-65acef6c9995cc48.js",
+      "static/chunks/main-app-3032fae1633af9e8.js",
+      "static/chunks/872-54aefec9d48a5a9b.js",
+      "static/chunks/app/poems/[slug]/page-5564d71d2f7f0495.js"
     ]
   }
 }
