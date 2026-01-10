@@ -8,6 +8,7 @@
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+  font-display: optional;
 }
 
 @font-face {
@@ -16,6 +17,7 @@
   font-weight: normal;
   font-style: italic;
   font-display: swap;
+  font-display: optional;
 }
 
 @font-face {
@@ -24,6 +26,7 @@
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+  font-display: optional;
 }
 
 @font-face {
@@ -32,6 +35,7 @@
   font-weight: normal;
   font-style: italic;
   font-display: swap;
+  font-display: optional;
 }
 
 /* Lenis Smooth Scroll */

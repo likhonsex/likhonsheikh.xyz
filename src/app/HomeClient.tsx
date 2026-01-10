@@ -35,18 +35,34 @@ export default function HomeClient({ poems, categories, tags }: HomeClientProps)
       {/* Hero Section with Banner */}
       <section 
         className="relative min-h-[80vh] flex items-center justify-center px-6 overflow-hidden"
-        style={{
-          backgroundImage: 'url(/hero-banner.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
+        role="banner"
+        aria-label="Hero section"
       >
+        {/* Preload hero image */}
+        <link rel="preload" as="image" href="/hero-banner.jpg" fetchPriority="high" />
+        
         {/* Dark Overlay for Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-charcoal/40 to-charcoal/60" />
+        <div 
+          className="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-charcoal/40 to-charcoal/60"
+          aria-hidden="true"
+        />
 
-        {/* Decorative Elements */}
-        <div className="absolute inset-0 overflow-hidden">
+        {/* Background Image with optimized loading */}
+        <div 
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: 'url(/hero-banner.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            willChange: 'transform',
+          }}
+          role="img"
+          aria-label="Decorative hero banner image"
+        />
+
+        {/* Decorative Elements - Reduced for performance */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
           <motion.div
             className="absolute top-1/4 left-1/4 w-64 h-64 bg-dustyRose/10 rounded-full blur-3xl"
             animate={{
@@ -83,7 +99,7 @@ export default function HomeClient({ poems, categories, tags }: HomeClientProps)
             <p className="text-dustyRose/90 text-sm uppercase tracking-widest mb-4">
               ব্যক্তিগত কবিতা সংগ্রহ
             </p>
-            <h1 className="font-heading text-4xl md:text-6xl font-medium text-paper mb-6 leading-tight drop-shadow-lg">
+            <h1 className="font-heading text-4xl md:text-6xl font-medium text-white mb-6 leading-tight drop-shadow-lg">
               ভালোবাসার কথা,<br />
               <span className="text-dustyRose">বিরহের গান</span>
             </h1>
@@ -106,6 +122,7 @@ export default function HomeClient({ poems, categories, tags }: HomeClientProps)
               <motion.span
                 animate={{ y: [0, 5, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
+                aria-hidden="true"
               >
                 ↓
               </motion.span>
@@ -119,6 +136,7 @@ export default function HomeClient({ poems, categories, tags }: HomeClientProps)
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
+          aria-hidden="true"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
@@ -131,7 +149,7 @@ export default function HomeClient({ poems, categories, tags }: HomeClientProps)
       </section>
 
       {/* Poems Section */}
-      <section id="poems" className="py-20 px-6">
+      <section id="poems" className="py-20 px-6" aria-labelledby="poems-heading">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -139,7 +157,7 @@ export default function HomeClient({ poems, categories, tags }: HomeClientProps)
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="font-heading text-3xl font-medium text-charcoal mb-4">
+            <h2 id="poems-heading" className="font-heading text-3xl font-medium text-charcoal mb-4">
               আমার লেখা
             </h2>
             <div className="w-16 h-0.5 bg-dustyRose/30 mx-auto" />
@@ -147,7 +165,7 @@ export default function HomeClient({ poems, categories, tags }: HomeClientProps)
 
           <FilterTabs categories={categories} />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6" role="list" aria-label="Poem listings">
             {filteredPoems.map((poem, index) => (
               <PoemCard key={poem.slug} poem={poem} index={index} />
             ))}
@@ -162,16 +180,17 @@ export default function HomeClient({ poems, categories, tags }: HomeClientProps)
       </section>
 
       {/* Tags Section */}
-      <section className="py-16 px-6 bg-softGray/30">
+      <section className="py-16 px-6 bg-softGray/30" aria-labelledby="tags-heading">
         <div className="max-w-3xl mx-auto text-center">
-          <h3 className="font-heading text-xl font-medium text-charcoal mb-6">
+          <h3 id="tags-heading" className="font-heading text-xl font-medium text-charcoal mb-6">
             বিষয় অনুসারে
           </h3>
-          <div className="flex flex-wrap gap-3 justify-center">
+          <div className="flex flex-wrap gap-3 justify-center" role="list" aria-label="Topic tags">
             {tags.map((tag) => (
               <span
                 key={tag}
                 className="tag cursor-default"
+                role="listitem"
               >
                 {tag}
               </span>

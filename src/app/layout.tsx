@@ -6,7 +6,7 @@ export const viewport: Viewport = {
   themeColor: '#C06C84',
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
+  maximumScale: 5,
 };
 
 export const metadata: Metadata = {
@@ -36,9 +36,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="bn" className="lenis lenis-smooth">
-      <body className="min-h-screen flex flex-col">
+      <head>
+        <link rel="preconnect" href="https://cdn-avatars.huggingface.co" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdn-avatars.huggingface.co" />
+      </head>
+      <body className="min-h-screen flex flex-col antialiased">
         <SmoothScroll />
-        {children}
+        <main className="flex-1">
+          {children}
+        </main>
       </body>
     </html>
   );
