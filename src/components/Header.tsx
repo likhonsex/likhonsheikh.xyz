@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from '@/components/ThemeToggle';
+import SearchTrigger from '@/components/SearchTrigger';
 
 /**
  * Header Component - Following Vercel Design Guidelines
@@ -59,11 +60,13 @@ export default function Header() {
 
           {/* Right Side Actions */}
           <div className="hidden md:flex items-center gap-3">
+            <SearchTrigger />
             <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button - Hamburger icon */}
           <div className="md:hidden flex items-center gap-2 ml-auto">
+            <SearchTrigger />
             <ThemeToggle />
             <button
               className="p-2 text-charcoal-700 dark:text-charcoal-300 hover:text-dustyRose-600 dark:hover:text-dustyRose-400 transition-colors"

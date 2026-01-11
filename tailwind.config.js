@@ -176,6 +176,40 @@ module.exports = {
           900: '#18181B',
           950: '#09090B',
         },
+        
+        // GitHub Design System Colors (Dark Mode - Dimmed)
+        github: {
+          // Dark mode colors (GitHub Dimmed)
+          bg: '#0d1117',
+          bgSubtle: '#161b22',
+          bgOverlay: '#0d1117',
+          bgSelection: 'rgba(56, 139, 253, 0.15)',
+          bgHover: 'rgba(177, 186, 196, 0.12)',
+          surface: '#161b22',
+          border: '#30363d',
+          borderHover: '#484f58',
+          borderSubtle: '#21262d',
+          
+          // Text colors
+          textPrimary: '#c9d1d9',
+          textSecondary: '#8b949e',
+          textTertiary: '#6e7681',
+          
+          // Accent colors
+          accent: '#58a6ff',
+          accentHover: '#79c0ff',
+          
+          // Semantic colors
+          success: '#238636',
+          successText: '#3fb950',
+          danger: '#f85149',
+          warning: '#d29922',
+          
+          // Type-specific colors
+          poetry: '#a371f7',
+          about: '#58a6ff',
+          project: '#3fb950',
+        },
       },
       
       // Border radius following Vercel conventions

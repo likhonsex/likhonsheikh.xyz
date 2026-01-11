@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import SmoothScroll from '@/components/SmoothScroll';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { SearchProvider } from '@/context/SearchContext';
+import CommandPalette from '@/components/CommandPalette';
 
 export const viewport: Viewport = {
   themeColor: '#C06C84',
@@ -59,10 +61,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SmoothScroll />
-          <main className="flex-1">
-            {children}
-          </main>
+          <SearchProvider>
+            <SmoothScroll />
+            <CommandPalette />
+            <main className="flex-1">
+              {children}
+            </main>
+          </SearchProvider>
         </ThemeProvider>
       </body>
     </html>

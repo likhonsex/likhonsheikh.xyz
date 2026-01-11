@@ -424,3 +424,135 @@ html.lenis {
     @apply bg-charcoal-800 text-charcoal-100;
   }
 }
+
+/* ==========================================================================
+   GitHub Design System - Command Palette Styles
+   ========================================================================== */
+
+@layer components {
+  /* Command palette specific styles using GitHub colors */
+  .command-palette {
+    @apply fixed inset-0 z-50;
+  }
+
+  .command-palette-backdrop {
+    @apply fixed inset-0 bg-github-bgOverlay/80 backdrop-blur-sm;
+  }
+
+  .command-palette-modal {
+    @apply fixed top-[10%] left-1/2 -translate-x-1/2 w-full max-w-2xl;
+    @apply bg-github-surface border border-github-border rounded-xl;
+    @apply shadow-github-lg overflow-hidden;
+  }
+
+  .command-palette-input {
+    @apply w-full bg-transparent text-github-textPrimary placeholder-github-textSecondary;
+    @apply outline-none text-sm px-4 py-3 flex items-center;
+  }
+
+  .command-palette-item {
+    @apply flex items-center gap-3 px-4 py-2.5 mx-2 rounded-md;
+    @apply transition-colors cursor-pointer;
+  }
+
+  .command-palette-item-selected {
+    @apply bg-github-bgSelection text-github-textPrimary;
+  }
+
+  .command-palette-item-default {
+    @apply hover:bg-github-bgHover/50 text-github-textSecondary;
+  }
+}
+
+/* GitHub color variables for light mode */
+:root {
+  /* GitHub Light Mode Colors */
+  --github-bg: #ffffff;
+  --github-bgSubtle: #f6f8fa;
+  --github-bgOverlay: #ffffff;
+  --github-bgSelection: rgba(56, 139, 253, 0.15);
+  --github-bgHover: rgba(177, 186, 196, 0.12);
+  --github-surface: #f6f8fa;
+  --github-border: #d0d7de;
+  --github-borderHover: #cfd3d8;
+  --github-borderSubtle: #eff1f3;
+
+  --github-textPrimary: #1f2328;
+  --github-textSecondary: #656d76;
+  --github-textTertiary: #6e7781;
+
+  --github-accent: #0969da;
+  --github-accentHover: #0860c7;
+
+  --github-success: #1a7f37;
+  --github-successText: #1a7f37;
+  --github-danger: #cf222e;
+  --github-warning: #9a6700;
+
+  --github-poetry: #8250df;
+  --github-about: #0969da;
+  --github-project: #1a7f37;
+
+  /* Shadow for modal */
+  --github-shadow-lg: 0 8px 24px rgba(1, 4, 9, 0.15);
+}
+
+/* Dark mode GitHub colors */
+.dark {
+  --github-bg: #0d1117;
+  --github-bgSubtle: #161b22;
+  --github-bgOverlay: #0d1117;
+  --github-bgSelection: rgba(56, 139, 253, 0.15);
+  --github-bgHover: rgba(177, 186, 196, 0.12);
+  --github-surface: #161b22;
+  --github-border: #30363d;
+  --github-borderHover: #484f58;
+  --github-borderSubtle: #21262d;
+
+  --github-textPrimary: #c9d1d9;
+  --github-textSecondary: #8b949e;
+  --github-textTertiary: #6e7681;
+
+  --github-accent: #58a6ff;
+  --github-accentHover: #79c0ff;
+
+  --github-success: #238636;
+  --github-successText: #3fb950;
+  --github-danger: #f85149;
+  --github-warning: #d29922;
+
+  --github-poetry: #a371f7;
+  --github-about: #58a6ff;
+  --github-project: #3fb950;
+
+  --github-shadow-lg: 0 8px 24px rgba(1, 4, 9, 0.75);
+}
+
+/* Apply GitHub colors to Tailwind theme */
+@layer utilities {
+  .bg-github-bg { background-color: var(--github-bg); }
+  .bg-github-bgSubtle { background-color: var(--github-bgSubtle); }
+  .bg-github-bgOverlay { background-color: var(--github-bgOverlay); }
+  .bg-github-bgSelection { background-color: var(--github-bgSelection); }
+  .bg-github-bgHover { background-color: var(--github-bgHover); }
+  .bg-github-surface { background-color: var(--github-surface); }
+  .bg-github-border { background-color: var(--github-border); }
+  
+  .text-github-textPrimary { color: var(--github-textPrimary); }
+  .text-github-textSecondary { color: var(--github-textSecondary); }
+  .text-github-textTertiary { color: var(--github-textTertiary); }
+  .text-github-accent { color: var(--github-accent); }
+  .text-github-success { color: var(--github-successText); }
+  .text-github-poetry { color: var(--github-poetry); }
+  .text-github-about { color: var(--github-about); }
+  .text-github-project { color: var(--github-project); }
+  
+  .border-github-border { border-color: var(--github-border); }
+  .border-github-borderSubtle { border-color: var(--github-borderSubtle); }
+  
+  .shadow-github-lg { box-shadow: var(--github-shadow-lg); }
+  
+  .hover\:bg-github-bgHover:hover { background-color: var(--github-bgHover); }
+  .hover\:text-github-accent:hover { color: var(--github-accent); }
+  .hover\:border-github-borderHover:hover { border-color: var(--github-borderHover); }
+}
